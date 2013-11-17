@@ -1,40 +1,40 @@
 package com.gmail.liamgomez75.parkourroll.listeners;
- 
+
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
- 
 import org.bukkit.plugin.Plugin;
- 
 
- 
 /**
- * 
+ * Damage Listener for Parkour Roll.
+ *
  * @author Liam Gomez
+ * @author JamesHealey94 <jameshealey1994.gmail.com>
  */
 public class DamageListener implements Listener {
- 
+
     /**
      * Plugin used for customizable values and strings.
      */
     private Plugin plugin;
- 
+
     /**
-     * Constructor.
-     * @param plugin plugin used to set config values
+     * Constructor - Initializes plugin.
+     *
+     * @param plugin    plugin used to set config values
      */
     public DamageListener(Plugin plugin) {
         this.plugin = plugin;
     }
- 
+
     /**
      * Performs parkour roll.
      * If expected fall damage is below damage threshold, the player will perform a parkour roll to set damage to 0.
      * Else, if player is not killed by the fall, they will perform a parkour roll to reduce the damage.
-     * @param e EntityDamageEvent triggered
+     *
+     * @param e     EntityDamageEvent triggered
      */
     @EventHandler
     public void onEntityDamageEvent(final EntityDamageEvent e) {
