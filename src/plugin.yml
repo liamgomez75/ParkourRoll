@@ -1,0 +1,16 @@
+name: ParkourRoll
+main: com.gmail.xxpwnage75.parkourroll.ParkourRoll
+version: 2.0
+
+commands:
+    parkourroll:
+        description: configure settings in the plugin!
+        aliases: [pkr, parkroll, pkroll]
+        usage: /<command> reload
+permissions:
+    pkr.*:
+        description: Gives access to all commands
+        default: false
+        children:
+            pkr.defaults: true
+            pkr.admin: true

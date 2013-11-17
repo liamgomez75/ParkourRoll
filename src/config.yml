@@ -1,0 +1,7 @@
+#Damage Threshold is the amount of damage normally taken before the plugin reduces damage instead of cancelling it
+#Note: Damage Threshold uses the amount of HP taken from a player instead of the block height
+#2 HP = 1 heart
+No Damage Roll Message: '&7You have successfully parkour rolled!'
+Injured Roll Message: '&7You are injured but live to tell the tale'
+Damage Threshold: 5
+Damage Reduction: .66
