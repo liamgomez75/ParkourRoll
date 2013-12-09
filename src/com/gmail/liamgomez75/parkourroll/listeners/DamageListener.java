@@ -1,5 +1,8 @@
 package com.gmail.liamgomez75.parkourroll.listeners;
 
+import com.gmail.liamgomez75.parkourroll.ParkourRoll;
+import com.gmail.liamgomez75.parkourroll.localisation.Localisation;
+import com.gmail.liamgomez75.parkourroll.localisation.LocalisationEntry;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,16 +19,16 @@ import org.bukkit.plugin.Plugin;
 public class DamageListener implements Listener {
 
     /**
-     * Plugin used for customizable values and strings.
+     * Plugin used for customizable values and localisation.
      */
-    private Plugin plugin;
+    private ParkourRoll plugin;
 
     /**
      * Constructor - Initializes plugin.
      *
-     * @param plugin    plugin used to set config values
+     * @param plugin    plugin used to set config values and localisation
      */
-    public DamageListener(Plugin plugin) {
+    public DamageListener(ParkourRoll plugin) {
         this.plugin = plugin;
     }
 
@@ -41,16 +44,19 @@ public class DamageListener implements Listener {
         if (!(e.getEntity() instanceof Player)) {
             return;
         }
+        
         final Player p = (Player) e.getEntity();
+        final Localisation localisation = plugin.getLocalisation();
+        
         if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
             if (p.isSneaking() && p.hasPermission("pkr.defaults")) {
                 if (e.getDamage() <= plugin.getConfig().getDouble("Damage Threshold")) { // better name than threshold maybe?
                     e.setDamage(0.0);
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("No Damage Roll Message")));
+                    p.sendMessage(localisation.get(LocalisationEntry.MSG_SUCCESSFUL_ROLL));
                 } else {
                     e.setDamage(e.getDamage() * plugin.getConfig().getDouble("Damage Reduction"));
                     if (e.getDamage() < p.getHealth()) {
-                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("Injured Roll Message")));
+                        p.sendMessage(localisation.get(LocalisationEntry.MSG_INJURED_BUT_SUCCESSFUL_ROLL));
                     }
                 }
             }
