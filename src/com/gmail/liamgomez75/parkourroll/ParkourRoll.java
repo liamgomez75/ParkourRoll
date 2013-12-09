@@ -1,7 +1,9 @@
 package com.gmail.liamgomez75.parkourroll;
 
 import com.gmail.liamgomez75.parkourroll.listeners.DamageListener;
-import org.bukkit.ChatColor;
+import com.gmail.liamgomez75.parkourroll.localisation.Localisable;
+import com.gmail.liamgomez75.parkourroll.localisation.Localisation;
+import com.gmail.liamgomez75.parkourroll.localisation.LocalisationEntry;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,8 +14,13 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author Liam Gomez
  * @author JamesHealey94 <jameshealey1994.gmail.com>
  */
-public class ParkourRoll extends JavaPlugin {
+public class ParkourRoll extends JavaPlugin implements Localisable {
 
+    /**
+     * The current localisation for the plugin.
+     */
+    private Localisation localisation = new Localisation(this);
+    
     @Override
     public void onEnable() {
         final DamageListener fallDamage = new DamageListener(this);
@@ -52,11 +59,21 @@ public class ParkourRoll extends JavaPlugin {
     public boolean reload(CommandSender sender) {
         if (sender.hasPermission("pkr.admin")) {
             reloadConfig();
-            sender.sendMessage(ChatColor.LIGHT_PURPLE + "Configuration reloaded.");
+            sender.sendMessage(localisation.get(LocalisationEntry.MSG_CONFIG_RELOADED));
             return true;
         } else {
-            sender.sendMessage(ChatColor.RED + "You don't have permission to do that!");
+            sender.sendMessage(localisation.get(LocalisationEntry.ERR_PERMISSION_DENIED));
         }
         return false;
+    }
+
+    @Override
+    public Localisation getLocalisation() {
+        return localisation;
+    }
+
+    @Override
+    public void setLocalisation(Localisation localisation) {
+        this.localisation = localisation;
     }
 }
