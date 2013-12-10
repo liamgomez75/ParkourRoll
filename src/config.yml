@@ -1,6 +1,440 @@
 #Damage Threshold is the amount of damage normally taken before the plugin reduces damage instead of cancelling it
 #Note: Damage Threshold uses the amount of HP taken from a player instead of the block height
 #2 HP = 1 heart
-Damage Threshold: 5
-Damage Reduction: .66
+
 Localisation Filename: localisation.yml
+
+Server:
+  PKR: false
+  Worlds:
+    World1:
+      PKR: true
+      ExpRate: 7
+      Players:
+        AS1LV3RN1NJA:
+          PKR: true
+          Exp Rate: 14
+          Level: 13
+          Exp: 1346
+        skillchickenz75:
+          PKR: false
+          ExpRate: 7
+          Level: 1
+          Exp: 0
+    World2:
+      PKR: false
+      Exp Rate: 7
+      Players:
+        AS1LV3RN1NJA:
+          PKR: false
+          Exp Rate: 7
+          Level: 1
+          Exp: 0
+        skillchickenz75:
+          PKR: false
+          Exp Rate: 7
+          Level: 1
+          Exp: 0
+
+Level:
+  1:
+    Damage Threshold: 3
+    Damage Reduction: .1
+    Exp Required: 100
+  2:
+    Damage Threshold: 3
+    Damage Reduction: .2
+    Exp Required: 200
+  3:
+    Damage Threshold: 3
+    Damage Reduction: .3
+    Exp Required: 300
+  4:
+    Damage Threshold: 3
+    Damage Reduction: .4
+    Exp Required: 400
+  5:
+    Damage Threshold: 4
+    Damage Reduction: .5
+    Exp Required: 500
+  6:
+    Damage Threshold: 4
+    Damage Reduction: .6
+    Exp Required: 600
+  7:
+    Damage Threshold: 4
+    Damage Reduction: .7
+    Exp Required: 700
+  8:
+    Damage Threshold: 4
+    Damage Reduction: .8
+    Exp Required: 800
+  9:
+    Damage Threshold: 4
+    Damage Reduction: .9
+    Exp Required: 900
+  10:
+    Damage Threshold: 5
+    Damage Reduction: .10
+    Exp Required: 1000
+  11:
+    Damage Threshold: 5
+    Damage Reduction: .11
+    Exp Required: 1100
+  12:
+    Damage Threshold: 5
+    Damage Reduction: .12
+    Exp Required: 1200
+  13:
+    Damage Threshold: 5
+    Damage Reduction: .13
+    Exp Required: 1300
+  14:
+    Damage Threshold: 5
+    Damage Reduction: .14
+    Exp Required: 1400
+  15:
+    Damage Threshold: 6
+    Damage Reduction: .15
+    Exp Required: 1500
+  16:
+    Damage Threshold: 6
+    Damage Reduction: .16
+    Exp Required: 1600
+  17:
+    Damage Threshold: 6
+    Damage Reduction: .17
+    Exp Required: 1700
+  18:
+    Damage Threshold: 6
+    Damage Reduction: .18
+    Exp Required: 1800
+  19:
+    Damage Threshold: 6
+    Damage Reduction: .19
+    Exp Required: 1900
+  20:
+    Damage Threshold: 7
+    Damage Reduction: .20
+    Exp Required: 2000
+  21:
+    Damage Threshold: 7
+    Damage Reduction: .21
+    Exp Required: 2100
+  22:
+    Damage Threshold: 7
+    Damage Reduction: .22
+    Exp Required: 2200
+  23:
+    Damage Threshold: 7
+    Damage Reduction: .23
+    Exp Required: 2300
+  24:
+    Damage Threshold: 7
+    Damage Reduction: .24
+    Exp Required: 2400
+  25:
+    Damage Threshold: 8
+    Damage Reduction: .25
+    Exp Required: 2500
+  26:
+    Damage Threshold: 8
+    Damage Reduction: .26
+    Exp Required: 2600
+  27:
+    Damage Threshold: 8
+    Damage Reduction: .27
+    Exp Required: 2700
+  28:
+    Damage Threshold: 8
+    Damage Reduction: .28
+    Exp Required: 2800
+  29:
+    Damage Threshold: 8
+    Damage Reduction: .29
+    Exp Required: 2900
+  30:
+    Damage Threshold: 9
+    Damage Reduction: .30
+    Exp Required: 3000
+  31:
+    Damage Threshold: 9
+    Damage Reduction: .31
+    Exp Required: 3100
+  32:
+    Damage Threshold: 9
+    Damage Reduction: .32
+    Exp Required: 3200
+  33:
+    Damage Threshold: 9
+    Damage Reduction: .33
+    Exp Required: 3300
+  34:
+    Damage Threshold: 9
+    Damage Reduction: .34
+    Exp Required: 3400
+  35:
+    Damage Threshold: 10
+    Damage Reduction: .35
+    Exp Required: 3500
+  36:
+    Damage Threshold: 10
+    Damage Reduction: .36
+    Exp Required: 3600
+  37:
+    Damage Threshold: 10
+    Damage Reduction: .37
+    Exp Required: 3700
+  38:
+    Damage Threshold: 10
+    Damage Reduction: .38
+    Exp Required: 3800
+  39:
+    Damage Threshold: 10
+    Damage Reduction: .39
+    Exp Required: 3900
+  40:
+    Damage Threshold: 11
+    Damage Reduction: .40
+    Exp Required: 4000
+  41:
+    Damage Threshold: 11
+    Damage Reduction: .41
+    Exp Required: 4100
+  42:
+    Damage Threshold: 11
+    Damage Reduction: .42
+    Exp Required: 4200
+  43:
+    Damage Threshold: 11
+    Damage Reduction: .43
+    Exp Required: 4300
+  44:
+    Damage Threshold: 11
+    Damage Reduction: .44
+    Exp Required: 4400
+  45:
+    Damage Threshold: 12
+    Damage Reduction: .45
+    Exp Required: 4500
+  46:
+    Damage Threshold: 12
+    Damage Reduction: .46
+    Exp Required: 4600
+  47:
+    Damage Threshold: 12
+    Damage Reduction: .47
+    Exp Required: 4700
+  48:
+    Damage Threshold: 12
+    Damage Reduction: .48
+    Exp Required: 4800
+  49:
+    Damage Threshold: 12
+    Damage Reduction: .49
+    Exp Required: 4900
+  50:
+    Damage Threshold: 13
+    Damage Reduction: .50
+    Exp Required: 5000
+  51:
+    Damage Threshold: 13
+    Damage Reduction: .51
+    Exp Required: 5100
+  52:
+    Damage Threshold: 13
+    Damage Reduction: .52
+    Exp Required: 5200
+  53:
+    Damage Threshold: 13
+    Damage Reduction: .53
+    Exp Required: 5300
+  54:
+    Damage Threshold: 13
+    Damage Reduction: .54
+    Exp Required: 5400
+  55:
+    Damage Threshold: 14
+    Damage Reduction: .55
+    Exp Required: 5500
+  56:
+    Damage Threshold: 14
+    Damage Reduction: .56
+    Exp Required: 5600
+  57:
+    Damage Threshold: 14
+    Damage Reduction: .57
+    Exp Required: 5700
+  58:
+    Damage Threshold: 14
+    Damage Reduction: .58
+    Exp Required: 5800
+  59:
+    Damage Threshold: 14
+    Damage Reduction: .59
+    Exp Required: 5900
+  60:
+    Damage Threshold: 15
+    Damage Reduction: .60
+    Exp Required: 6000
+  61:
+    Damage Threshold: 15
+    Damage Reduction: .61
+    Exp Required: 6100
+  62:
+    Damage Threshold: 15
+    Damage Reduction: .62
+    Exp Required: 6200
+  63:
+    Damage Threshold: 15
+    Damage Reduction: .63
+    Exp Required: 6300
+  64:
+    Damage Threshold: 15
+    Damage Reduction: .64
+    Exp Required: 6400
+  65:
+    Damage Threshold: 16
+    Damage Reduction: .65
+    Exp Required: 6500
+  66:
+    Damage Threshold: 16
+    Damage Reduction: .66
+    Exp Required: 6600
+  67:
+    Damage Threshold: 16
+    Damage Reduction: .67
+    Exp Required: 6700
+  68:
+    Damage Threshold: 16
+    Damage Reduction: .68
+    Exp Required: 6800
+  69:
+    Damage Threshold: 16
+    Damage Reduction: .69
+    Exp Required: 6900
+  70:
+    Damage Threshold: 17
+    Damage Reduction: .70
+    Exp Required: 7000
+  71:
+    Damage Threshold: 17
+    Damage Reduction: .71
+    Exp Required: 7100
+  72:
+    Damage Threshold: 17
+    Damage Reduction: .72
+    Exp Required: 7200
+  73:
+    Damage Threshold: 17
+    Damage Reduction: .73
+    Exp Required: 7300
+  74:
+    Damage Threshold: 17
+    Damage Reduction: .74
+    Exp Required: 7400
+  75:
+    Damage Threshold: 18
+    Damage Reduction: .75
+    Exp Required: 7500
+  76:
+    Damage Threshold: 18
+    Damage Reduction: .76
+    Exp Required: 7600
+  77:
+    Damage Threshold: 18
+    Damage Reduction: .77
+    Exp Required: 7700
+  78:
+    Damage Threshold: 18
+    Damage Reduction: .78
+    Exp Required: 7800
+  79:
+    Damage Threshold: 18
+    Damage Reduction: .79
+    Exp Required: 7900
+  80:
+    Damage Threshold: 19
+    Damage Reduction: .80
+    Exp Required: 8000
+  81:
+    Damage Threshold: 19
+    Damage Reduction: .81
+    Exp Required: 8100
+  82:
+    Damage Threshold: 19
+    Damage Reduction: .82
+    Exp Required: 8200
+  83:
+    Damage Threshold: 19
+    Damage Reduction: .83
+    Exp Required: 8300
+  84:
+    Damage Threshold: 19
+    Damage Reduction: .84
+    Exp Required: 8400
+  85:
+    Damage Threshold: 20
+    Damage Reduction: .85
+    Exp Required: 8500
+  86:
+    Damage Threshold: 20
+    Damage Reduction: .86
+    Exp Required: 8600
+  87:
+    Damage Threshold: 20
+    Damage Reduction: .87
+    Exp Required: 8700
+  88:
+    Damage Threshold: 20
+    Damage Reduction: .88
+    Exp Required: 8800
+  89:
+    Damage Threshold: 20
+    Damage Reduction: .89
+    Exp Required: 8900
+  90:
+    Damage Threshold: 21
+    Damage Reduction: .90
+    Exp Required: 9000
+  91:
+    Damage Threshold: 21
+    Damage Reduction: .91
+    Exp Required: 9100
+  92:
+    Damage Threshold: 21
+    Damage Reduction: .92
+    Exp Required: 9200
+  93:
+    Damage Threshold: 21
+    Damage Reduction: .93
+    Exp Required: 9300
+  94:
+    Damage Threshold: 21
+    Damage Reduction: .94
+    Exp Required: 9400
+  95:
+    Damage Threshold: 22
+    Damage Reduction: .95
+    Exp Required: 9500
+  96:
+    Damage Threshold: 22
+    Damage Reduction: .96
+    Exp Required: 9600
+  97:
+    Damage Threshold: 22
+    Damage Reduction: .97
+    Exp Required: 9700
+  98:
+    Damage Threshold: 22
+    Damage Reduction: .98
+    Exp Required: 9800
+  99:
+    Damage Threshold: 22
+    Damage Reduction: .99
+    Exp Required: 9900
+  100:
+    Damage Threshold: 23
+    Damage Reduction: 0
+    Exp Required: 10000
+
