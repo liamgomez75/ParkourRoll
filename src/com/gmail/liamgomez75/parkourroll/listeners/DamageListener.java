@@ -13,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 /**
  * Damage Listener for Parkour Roll.
  *
- * @author Liam Gomez
+ * @author Liam Gomez <liamgomez75.gmail.com>
  * @author JamesHealey94 <jameshealey1994.gmail.com>
  */
 public class DamageListener implements Listener {

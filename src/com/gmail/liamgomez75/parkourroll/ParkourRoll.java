@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * Parkour Roll plugin for Bukkit.
  *
- * @author Liam Gomez
+ * @author Liam Gomez <liamgomez75.gmail.com>
  * @author JamesHealey94 <jameshealey1994.gmail.com>
  */
 public class ParkourRoll extends JavaPlugin implements Localisable {
