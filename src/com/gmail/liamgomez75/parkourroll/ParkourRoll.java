@@ -4,8 +4,13 @@ import com.gmail.liamgomez75.parkourroll.listeners.DamageListener;
 import com.gmail.liamgomez75.parkourroll.localisation.Localisable;
 import com.gmail.liamgomez75.parkourroll.localisation.Localisation;
 import com.gmail.liamgomez75.parkourroll.localisation.LocalisationEntry;
+import com.gmail.liamgomez75.parkourroll.utils.EXPConfigUtils;
+import com.gmail.liamgomez75.parkourroll.utils.LevelConfigUtils;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -20,6 +25,8 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
      * The current localisation for the plugin.
      */
     private Localisation localisation = new Localisation(this);
+    private ParkourRoll plugin;
+    
     
     @Override
     public void onEnable() {
@@ -43,6 +50,23 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
             if (args.length > 0) {
                 if ((args[0].equalsIgnoreCase("reload"))) {
                     return reload(sender);
+                }
+                if ((args[0].equalsIgnoreCase("level"))) {
+                    if(sender instanceof Player) {
+                        Player p = (Player) sender;
+                        World world = p.getWorld();
+                        int lvlNum = LevelConfigUtils.getPlayerLevel(p,world,plugin);
+                        int expNum = EXPConfigUtils.getPlayerExp(p,world,plugin);
+                        int reqExp = plugin.getConfig().getInt("Level." + lvlNum + ".Exp Required");
+                        sender.sendMessage("You are level " + lvlNum + ".");
+                        sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                        return true;
+                    } else {
+                        sender.sendMessage("You can't run that command from the console!");
+                    }
+                    
+                    
+                   
                 }
             }
         }
