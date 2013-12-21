@@ -50,8 +50,7 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
             if (args.length > 0) {
                 if ((args[0].equalsIgnoreCase("reload"))) {
                     return reload(sender);
-                }
-                if ((args[0].equalsIgnoreCase("level"))) {
+                } else if ((args[0].equalsIgnoreCase("level"))) {
                     if(sender instanceof Player) {
                         Player p = (Player) sender;
                         World world = p.getWorld();
