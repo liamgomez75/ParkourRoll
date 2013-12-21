@@ -6,6 +6,7 @@ Localisation Filename: localisation.yml
 
 Server:
   PKR: false
+  ExpRate: 7
   Worlds:
     World1:
       PKR: true
@@ -14,12 +15,12 @@ Server:
         AS1LV3RN1NJA:
           PKR: true
           Exp Rate: 14
-          Level: 13
-          Exp: 1346
+          Lvl: 13
+          Exp: 1246
         skillchickenz75:
           PKR: false
           ExpRate: 7
-          Level: 1
+          Lvl: 1
           Exp: 0
     World2:
       PKR: false
@@ -28,50 +29,50 @@ Server:
         AS1LV3RN1NJA:
           PKR: false
           Exp Rate: 7
-          Level: 1
+          Lvl: 1
           Exp: 0
         skillchickenz75:
           PKR: false
           Exp Rate: 7
-          Level: 1
+          Lvl: 1
           Exp: 0
 
 Level:
   1:
     Damage Threshold: 3
-    Damage Reduction: .1
+    Damage Reduction: .01
     Exp Required: 100
   2:
     Damage Threshold: 3
-    Damage Reduction: .2
+    Damage Reduction: .02
     Exp Required: 200
   3:
     Damage Threshold: 3
-    Damage Reduction: .3
+    Damage Reduction: .03
     Exp Required: 300
   4:
     Damage Threshold: 3
-    Damage Reduction: .4
+    Damage Reduction: .04
     Exp Required: 400
   5:
     Damage Threshold: 4
-    Damage Reduction: .5
+    Damage Reduction: .05
     Exp Required: 500
   6:
     Damage Threshold: 4
-    Damage Reduction: .6
+    Damage Reduction: .06
     Exp Required: 600
   7:
     Damage Threshold: 4
-    Damage Reduction: .7
+    Damage Reduction: .07
     Exp Required: 700
   8:
     Damage Threshold: 4
-    Damage Reduction: .8
+    Damage Reduction: .08
     Exp Required: 800
   9:
     Damage Threshold: 4
-    Damage Reduction: .9
+    Damage Reduction: .09
     Exp Required: 900
   10:
     Damage Threshold: 5
