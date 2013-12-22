@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gmail.liamgomez75.parkourroll.utils;
 
 import org.bukkit.World;
@@ -60,8 +56,7 @@ public abstract class EXPConfigUtils {
      * @return          the Exp of player in world
      */
     public static int getPlayerExp(Player player, World world, Plugin plugin) {
-        return (plugin.getConfig().getInt("Server.Worlds." + world.getName() + ".Players." + player.getName() + "." + EXP_CONFIG_STRING,
-                plugin.getConfig().getInt("Server.Worlds." + world.getName() + ".Players." + player.getName())));
+        return plugin.getConfig().getInt("Server.Worlds." + world.getName() + ".Players." + player.getName() + "." + EXP_CONFIG_STRING,
+                EXP_DEFAULT);
     }
-
 }

@@ -4,12 +4,10 @@ import com.gmail.liamgomez75.parkourroll.ParkourRoll;
 import com.gmail.liamgomez75.parkourroll.experience.Experience;
 import com.gmail.liamgomez75.parkourroll.localisation.Localisation;
 import com.gmail.liamgomez75.parkourroll.localisation.LocalisationEntry;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.plugin.Plugin;
 
 /**
  * Damage Listener for Parkour Roll.
@@ -18,9 +16,6 @@ import org.bukkit.plugin.Plugin;
  * @author JamesHealey94 <jameshealey1994.gmail.com>
  */
 public class DamageListener implements Listener {
-    private int expGained;
-     private boolean pkr;
-  
 
     /**
      * Plugin used for customizable values and localisation.
@@ -51,24 +46,21 @@ public class DamageListener implements Listener {
         
         final Player p = (Player) e.getEntity();
         final Localisation localisation = plugin.getLocalisation();
-        Experience xp = new Experience(p);
-        
-        
         if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
             if (p.isSneaking() && p.hasPermission("pkr.defaults")) {
-                if (e.getDamage() <= plugin.getConfig().getDouble("Damage Threshold")) { // better name than threshold maybe?
-                    int xpGained = xp.expGain((int)e.getDamage());
+                if (e.getDamage() <= plugin.getConfig().getDouble("Damage Threshold")) { // TODO better name than threshold maybe?
                     e.setDamage(0.0);
                     p.sendMessage(localisation.get(LocalisationEntry.MSG_SUCCESSFUL_ROLL));
-                    xp.setXP(xpGained);
                 } else {
-                    int xpGained = xp.expGain((int)e.getDamage());
                     e.setDamage(e.getDamage() * plugin.getConfig().getDouble("Damage Reduction"));
                     if (e.getDamage() < p.getHealth()) {
                         p.sendMessage(localisation.get(LocalisationEntry.MSG_INJURED_BUT_SUCCESSFUL_ROLL));
-                        xp.setXP(xpGained);
+                    } else {
+                        return;
                     }
                 }
+                final int xpGained = Experience.getExpReward(plugin, p, (int) e.getDamage());
+                Experience.addXP(plugin, p, p.getWorld(), xpGained);
             }
         }
     }

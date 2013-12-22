@@ -7,27 +7,27 @@ Localisation Filename: localisation.yml
 Server:
   Exp Rate: 7
   Worlds:
-    World1:
+    world:
       Exp Rate: 7
       Players:
         AS1LV3RN1NJA:
           Exp Rate: 14
-          Lvl: 13
+          Level: 13
           Exp: 1246
         skillchickenz75:
           Exp Rate: 7
-          Lvl: 1
+          Level: 1
           Exp: 0
     World2:
       Exp Rate: 7
       Players:
         AS1LV3RN1NJA:
           Exp Rate: 7
-          Lvl: 1
+          Level: 1
           Exp: 0
         skillchickenz75:
           Exp Rate: 7
-          Lvl: 1
+          Level: 1
           Exp: 0
 
 Level:

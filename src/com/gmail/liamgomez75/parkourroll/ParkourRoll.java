@@ -1,16 +1,17 @@
 package com.gmail.liamgomez75.parkourroll;
 
+import com.gmail.liamgomez75.parkourroll.experience.Experience;
 import com.gmail.liamgomez75.parkourroll.listeners.DamageListener;
 import com.gmail.liamgomez75.parkourroll.localisation.Localisable;
 import com.gmail.liamgomez75.parkourroll.localisation.Localisation;
 import com.gmail.liamgomez75.parkourroll.localisation.LocalisationEntry;
 import com.gmail.liamgomez75.parkourroll.utils.EXPConfigUtils;
 import com.gmail.liamgomez75.parkourroll.utils.LevelConfigUtils;
+import com.gmail.liamgomez75.parkourroll.utils.RateConfigUtils;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -26,11 +27,9 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
      */
     private Localisation localisation = new Localisation(this);
     
-    
     @Override
     public void onEnable() {
-        final DamageListener fallDamage = new DamageListener(this);
-        getServer().getPluginManager().registerEvents(fallDamage, this);
+        getServer().getPluginManager().registerEvents(new DamageListener(this), this);
         saveDefaultConfig();
     }
 
@@ -50,21 +49,21 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                 if ((args[0].equalsIgnoreCase("reload"))) {
                     return reload(sender);
                 } else if ((args[0].equalsIgnoreCase("level"))) {
-                    if(sender instanceof Player) {
-                        Player p = (Player) sender;
-                        World world = p.getWorld();
-                        int lvlNum = LevelConfigUtils.getPlayerLevel(p,world,this);
-                        int expNum = EXPConfigUtils.getPlayerExp(p,world,this);
-                        int reqExp = this.getConfig().getInt("Level." + lvlNum + ".Exp Required");
+                    if (sender instanceof Player) {
+                        final Player p = (Player) sender;
+                        final World world = p.getWorld();
+                        final int lvlNum = LevelConfigUtils.getPlayerLevel(p, world, this);
+                        final int expNum = EXPConfigUtils.getPlayerExp(p, world, this);
+                        final int reqExp = Experience.getRequiredExp(this, lvlNum);
+                        final int rate = RateConfigUtils.getPlayerRate(p, world, this);
                         sender.sendMessage("You are level " + lvlNum + ".");
                         sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                        sender.sendMessage("Exp Rate: " + rate); // TODO remove?
                         return true;
                     } else {
                         sender.sendMessage("You can't run that command from the console!");
+                        return true;
                     }
-                    
-                    
-                   
                 }
             }
         }
@@ -82,11 +81,10 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
         if (sender.hasPermission("pkr.admin")) {
             reloadConfig();
             sender.sendMessage(localisation.get(LocalisationEntry.MSG_CONFIG_RELOADED));
-            return true;
         } else {
             sender.sendMessage(localisation.get(LocalisationEntry.ERR_PERMISSION_DENIED));
         }
-        return false;
+        return true;
     }
 
     @Override

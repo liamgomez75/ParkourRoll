@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gmail.liamgomez75.parkourroll.utils;
 
 import org.bukkit.World;
@@ -19,7 +15,7 @@ public abstract class LevelConfigUtils {
     /**
      * The string for the value in the config this class is interacting with.
      */
-    public static final String LVL_CONFIG_STRING = "Lvl";
+    public static final String LVL_CONFIG_STRING = "Level";
 
     /**
      * The default value, used if no other values are found.
@@ -60,7 +56,8 @@ public abstract class LevelConfigUtils {
      * @return          the Level of player in world
      */
     public static int getPlayerLevel(Player player, World world, Plugin plugin) {
-        return (plugin.getConfig().getInt("Server.Worlds." + world.getName() + ".Players." + player.getName() + "." + LVL_CONFIG_STRING, LVL_DEFAULT));
+        return plugin.getConfig().getInt("Server.Worlds." + world.getName() + ".Players." + player.getName() + "." + LVL_CONFIG_STRING,
+                LVL_DEFAULT);
     }
 
 }
