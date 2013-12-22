@@ -63,7 +63,9 @@ public class DamageListener implements Listener {
                         return;
                     }
                 }
-                final int xpGained = Experience.getExpReward(plugin, p, (int) e.getDamage());
+                int dmg = (int) e.getDamage();
+                int randomNum =(int) (Math.random() * dmg) + 1;
+                final int xpGained = Experience.getExpReward(plugin, p, randomNum);
                 Experience.addXP(plugin, p, p.getWorld(), xpGained);
             }
         }
