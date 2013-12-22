@@ -25,7 +25,6 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
      * The current localisation for the plugin.
      */
     private Localisation localisation = new Localisation(this);
-    private ParkourRoll plugin;
     
     
     @Override
@@ -54,9 +53,9 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                     if(sender instanceof Player) {
                         Player p = (Player) sender;
                         World world = p.getWorld();
-                        int lvlNum = LevelConfigUtils.getPlayerLevel(p,world,plugin);
-                        int expNum = EXPConfigUtils.getPlayerExp(p,world,plugin);
-                        int reqExp = plugin.getConfig().getInt("Level." + lvlNum + ".Exp Required");
+                        int lvlNum = LevelConfigUtils.getPlayerLevel(p,world,this);
+                        int expNum = EXPConfigUtils.getPlayerExp(p,world,this);
+                        int reqExp = this.getConfig().getInt("Level." + lvlNum + ".Exp Required");
                         sender.sendMessage("You are level " + lvlNum + ".");
                         sender.sendMessage("Exp: " + expNum + "/" + reqExp);
                         return true;
