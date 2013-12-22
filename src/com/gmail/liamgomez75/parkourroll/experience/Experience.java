@@ -1,10 +1,7 @@
 package com.gmail.liamgomez75.parkourroll.experience;
 
 import com.gmail.liamgomez75.parkourroll.utils.EXPConfigUtils;
-import com.gmail.liamgomez75.parkourroll.utils.EXPConfigUtils;
 import com.gmail.liamgomez75.parkourroll.utils.LevelConfigUtils;
-import com.gmail.liamgomez75.parkourroll.utils.LevelConfigUtils;
-import com.gmail.liamgomez75.parkourroll.utils.RateConfigUtils;
 import com.gmail.liamgomez75.parkourroll.utils.RateConfigUtils;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -29,7 +26,7 @@ public abstract class Experience {
     public static int getExpReward(Plugin plugin, Player player, int damage) {
         final World world = player.getWorld();
         final int expRate = RateConfigUtils.getPlayerRate(player, world, plugin);
-        final int level = LevelConfigUtils.getPlayerLevel(player, world ,plugin);
+        final int level = LevelConfigUtils.getPlayerLevel(player, world, plugin);
         return level * expRate + damage;
     }
 
@@ -42,20 +39,32 @@ public abstract class Experience {
      * @param xpGain
      */
     public static void addXP(Plugin plugin, Player player, World world, int xpGain) {
-        int level = LevelConfigUtils.getPlayerLevel(player, world, plugin);
         int currentExp = EXPConfigUtils.getPlayerExp(player, world, plugin);
         currentExp += xpGain;
-        final int reqExp = plugin.getConfig().getInt("Level." + level + ".Exp Required");
-        player.sendMessage("You have gained" + xpGain + "experience");
+        player.sendMessage("You have gained " + xpGain + " experience");
+        
+        int level = LevelConfigUtils.getPlayerLevel(player, world, plugin);
+        final int reqExp = getRequiredExp(plugin, level);
         if (currentExp >= reqExp) {
             level++;
-            LevelConfigUtils.setPlayerLevel(player, world, level, plugin);
+            currentExp -= reqExp;
             
-            final int exp = currentExp - reqExp;
-            EXPConfigUtils.setPlayerExp(player, world, exp, plugin);
-            plugin.saveConfig();
-            level = plugin.getConfig().getInt("Server.Worlds." + world.getName() + "." + player + ".Lvl");
+            LevelConfigUtils.setPlayerLevel(player, world, level, plugin);
             player.sendMessage("You have leveled up to level " + level + "!");
         }
+        EXPConfigUtils.setPlayerExp(player, world, currentExp, plugin);
+        
+        plugin.saveConfig();
+    }
+
+    /**
+     * Returns required Experience to get to the next level.
+     * 
+     * @param plugin
+     * @param level
+     * @return 
+     */
+    public static int getRequiredExp(Plugin plugin, int level) {
+        return plugin.getConfig().getInt("Level." + level + ".Exp Required");
     }
 }

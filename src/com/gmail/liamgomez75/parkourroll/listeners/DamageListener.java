@@ -45,11 +45,9 @@ public class DamageListener implements Listener {
         }
         
         final Player p = (Player) e.getEntity();
-        final Localisation localisation = plugin.getLocalisation();        
-        
+        final Localisation localisation = plugin.getLocalisation();
         if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
             if (p.isSneaking() && p.hasPermission("pkr.defaults")) {
-                int xpGained = Experience.getExpReward(plugin, p, (int) e.getDamage());
                 if (e.getDamage() <= plugin.getConfig().getDouble("Damage Threshold")) { // TODO better name than threshold maybe?
                     e.setDamage(0.0);
                     p.sendMessage(localisation.get(LocalisationEntry.MSG_SUCCESSFUL_ROLL));
@@ -57,8 +55,11 @@ public class DamageListener implements Listener {
                     e.setDamage(e.getDamage() * plugin.getConfig().getDouble("Damage Reduction"));
                     if (e.getDamage() < p.getHealth()) {
                         p.sendMessage(localisation.get(LocalisationEntry.MSG_INJURED_BUT_SUCCESSFUL_ROLL));
+                    } else {
+                        return;
                     }
                 }
+                final int xpGained = Experience.getExpReward(plugin, p, (int) e.getDamage());
                 Experience.addXP(plugin, p, p.getWorld(), xpGained);
             }
         }
