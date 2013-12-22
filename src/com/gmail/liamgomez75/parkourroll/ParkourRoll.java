@@ -10,7 +10,6 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -62,9 +61,6 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                     } else {
                         sender.sendMessage("You can't run that command from the console!");
                     }
-                    
-                    
-                   
                 }
             }
         }

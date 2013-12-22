@@ -19,7 +19,7 @@ public abstract class RateConfigUtils {
     /**
      * The string for the value in the config this class is interacting with.
      */
-    public static final String RATE_CONFIG_STRING = "ExpRate";
+    public static final String RATE_CONFIG_STRING = "Exp Rate";
 
     /**
      * The default value, used if no other values are found.
