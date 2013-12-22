@@ -4,10 +4,13 @@ import com.gmail.liamgomez75.parkourroll.ParkourRoll;
 import com.gmail.liamgomez75.parkourroll.experience.Experience;
 import com.gmail.liamgomez75.parkourroll.localisation.Localisation;
 import com.gmail.liamgomez75.parkourroll.localisation.LocalisationEntry;
+import com.gmail.liamgomez75.parkourroll.utils.LevelConfigUtils;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.plugin.Plugin;
 
 /**
  * Damage Listener for Parkour Roll.
@@ -45,14 +48,15 @@ public class DamageListener implements Listener {
         }
         
         final Player p = (Player) e.getEntity();
+        int lvl = LevelConfigUtils.getPlayerLevel(p,p.getWorld(),plugin);
         final Localisation localisation = plugin.getLocalisation();
         if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
             if (p.isSneaking() && p.hasPermission("pkr.defaults")) {
-                if (e.getDamage() <= plugin.getConfig().getDouble("Damage Threshold")) { // TODO better name than threshold maybe?
+                if (e.getDamage() <= plugin.getConfig().getDouble("Level." + lvl  +".Damage Threshold")) { // TODO better name than threshold maybe?
                     e.setDamage(0.0);
                     p.sendMessage(localisation.get(LocalisationEntry.MSG_SUCCESSFUL_ROLL));
                 } else {
-                    e.setDamage(e.getDamage() * plugin.getConfig().getDouble("Damage Reduction"));
+                    e.setDamage(e.getDamage() * plugin.getConfig().getDouble("Level." + lvl + ".Damage Reduction"));
                     if (e.getDamage() < p.getHealth()) {
                         p.sendMessage(localisation.get(LocalisationEntry.MSG_INJURED_BUT_SUCCESSFUL_ROLL));
                     } else {

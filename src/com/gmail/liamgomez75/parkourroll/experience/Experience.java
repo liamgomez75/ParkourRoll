@@ -67,4 +67,4 @@ public abstract class Experience {
     public static int getRequiredExp(Plugin plugin, int level) {
         return plugin.getConfig().getInt("Level." + level + ".Exp Required");
     }
-}
+}           
