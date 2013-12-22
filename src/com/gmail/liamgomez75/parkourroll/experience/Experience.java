@@ -27,7 +27,7 @@ public abstract class Experience {
         final World world = player.getWorld();
         final int expRate = RateConfigUtils.getPlayerRate(player, world, plugin);
         final int level = LevelConfigUtils.getPlayerLevel(player, world, plugin);
-        return level * expRate + damage;
+        return damage * expRate + level;
     }
 
     /**
