@@ -19,7 +19,7 @@ public abstract class LevelConfigUtils {
     /**
      * The string for the value in the config this class is interacting with.
      */
-    public static final String LVL_CONFIG_STRING = "Level";
+    public static final String LVL_CONFIG_STRING = "Lvl";
 
     /**
      * The default value, used if no other values are found.
