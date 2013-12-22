@@ -60,7 +60,7 @@ public abstract class LevelConfigUtils {
      * @return          the Level of player in world
      */
     public static int getPlayerLevel(Player player, World world, Plugin plugin) {
-        return (plugin.getConfig().getInt("Server.Worlds." + world.getName() + ".Players." + player.getName() + "." + LVL_CONFIG_STRING));
+        return (plugin.getConfig().getInt("Server.Worlds." + world.getName() + ".Players." + player.getName() + "." + LVL_CONFIG_STRING, LVL_DEFAULT));
     }
 
 }
