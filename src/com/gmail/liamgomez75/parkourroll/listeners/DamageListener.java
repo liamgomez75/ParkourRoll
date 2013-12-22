@@ -4,7 +4,6 @@ import com.gmail.liamgomez75.parkourroll.ParkourRoll;
 import com.gmail.liamgomez75.parkourroll.experience.Experience;
 import com.gmail.liamgomez75.parkourroll.localisation.Localisation;
 import com.gmail.liamgomez75.parkourroll.localisation.LocalisationEntry;
-import com.gmail.liamgomez75.parkourroll.utils.PKRConfigUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -53,11 +52,10 @@ public class DamageListener implements Listener {
         final Player p = (Player) e.getEntity();
         final Localisation localisation = plugin.getLocalisation();
         Experience xp = new Experience(p);
-        pkr = PKRConfigUtils.getServerStatus(plugin);
         
         
         if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
-            if (p.isSneaking() && p.hasPermission("pkr.defaults") && pkr) {
+            if (p.isSneaking() && p.hasPermission("pkr.defaults")) {
                 if (e.getDamage() <= plugin.getConfig().getDouble("Damage Threshold")) { // better name than threshold maybe?
                     int xpGained = xp.expGain((int)e.getDamage());
                     e.setDamage(0.0);

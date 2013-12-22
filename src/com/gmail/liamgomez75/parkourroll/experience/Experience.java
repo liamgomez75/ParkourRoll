@@ -7,6 +7,7 @@ package com.gmail.liamgomez75.parkourroll.experience;
 import com.gmail.liamgomez75.parkourroll.ParkourRoll;
 import com.gmail.liamgomez75.parkourroll.utils.EXPConfigUtils;
 import com.gmail.liamgomez75.parkourroll.utils.LevelConfigUtils;
+import com.gmail.liamgomez75.parkourroll.utils.RateConfigUtils;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -46,7 +47,7 @@ public class Experience {
         //Calculates and returns the amount of exp gained from the last fall
         public int expGain(int dmg) {
             world = player.getWorld();
-            expRate = plugin.getConfig().getInt("Server.Worlds." + worldName + "." + player + ".Exp Rate");
+            expRate = RateConfigUtils.getPlayerRate(player,world,plugin);
             level = LevelConfigUtils.getPlayerLevel(player, world ,plugin);
             damage = dmg;
             return level * expRate + damage;

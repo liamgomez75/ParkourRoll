@@ -5,34 +5,27 @@
 Localisation Filename: localisation.yml
 
 Server:
-  PKR: false
-  ExpRate: 7
+  Exp Rate: 7
   Worlds:
     World1:
-      PKR: true
-      ExpRate: 7
+      Exp Rate: 7
       Players:
         AS1LV3RN1NJA:
-          PKR: true
           Exp Rate: 14
           Lvl: 13
           Exp: 1246
         skillchickenz75:
-          PKR: false
-          ExpRate: 7
+          Exp Rate: 7
           Lvl: 1
           Exp: 0
     World2:
-      PKR: false
       Exp Rate: 7
       Players:
         AS1LV3RN1NJA:
-          PKR: false
           Exp Rate: 7
           Lvl: 1
           Exp: 0
         skillchickenz75:
-          PKR: false
           Exp Rate: 7
           Lvl: 1
           Exp: 0
