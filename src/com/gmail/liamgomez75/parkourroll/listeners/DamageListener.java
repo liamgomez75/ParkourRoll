@@ -52,7 +52,7 @@ public class DamageListener implements Listener {
         final Localisation localisation = plugin.getLocalisation();
         if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
             if (p.isSneaking() && p.hasPermission("pkr.defaults")) {
-                if (e.getDamage() <= plugin.getConfig().getDouble("Level." + lvl  +".Damage Threshold")) { // TODO better name than threshold maybe?
+                if (p.getFallDistance() <= plugin.getConfig().getDouble("Level." + lvl  +".Damage Threshold")) { // TODO better name than threshold maybe?
                     e.setDamage(0.0);
                     p.sendMessage(localisation.get(LocalisationEntry.MSG_SUCCESSFUL_ROLL));
                 } else {
