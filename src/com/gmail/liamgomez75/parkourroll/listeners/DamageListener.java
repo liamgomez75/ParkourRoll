@@ -58,9 +58,9 @@ public class DamageListener implements Listener {
                     e.setDamage(0.0);
                     p.sendMessage(localisation.get(LocalisationEntry.MSG_SUCCESSFUL_ROLL));
                 } else {
+                    dmg = (int) e.getDamage();
                     e.setDamage(e.getDamage() * plugin.getConfig().getDouble("Level." + lvl + ".Damage Reduction"));
                     if (e.getDamage() < p.getHealth()) {
-                        dmg = (int) e.getDamage();
                         p.sendMessage(localisation.get(LocalisationEntry.MSG_INJURED_BUT_SUCCESSFUL_ROLL));
                     } else {
                         return;
