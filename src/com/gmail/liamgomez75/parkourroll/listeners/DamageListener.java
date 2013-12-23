@@ -24,7 +24,6 @@ public class DamageListener implements Listener {
      * Plugin used for customizable values and localisation.
      */
     private ParkourRoll plugin;
-    int dmg = 0;
 
     /**
      * Constructor - Initializes plugin.
@@ -54,11 +53,9 @@ public class DamageListener implements Listener {
         if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
             if (p.isSneaking() && p.hasPermission("pkr.defaults")) {
                 if (e.getDamage() <= plugin.getConfig().getDouble("Level." + lvl  +".Damage Threshold")) { // TODO better name than threshold maybe?
-                    dmg = (int) e.getDamage();
                     e.setDamage(0.0);
                     p.sendMessage(localisation.get(LocalisationEntry.MSG_SUCCESSFUL_ROLL));
                 } else {
-                    dmg = (int) e.getDamage();
                     e.setDamage(e.getDamage() * plugin.getConfig().getDouble("Level." + lvl + ".Damage Reduction"));
                     if (e.getDamage() < p.getHealth()) {
                         p.sendMessage(localisation.get(LocalisationEntry.MSG_INJURED_BUT_SUCCESSFUL_ROLL));
@@ -67,7 +64,7 @@ public class DamageListener implements Listener {
                     }
                 }
                 
-                int randomNum =(int) (Math.random() * dmg) + 1;
+                int randomNum =(int) (Math.random() * p.getFallDistance()) + 1;
                 final int xpGained = Experience.getExpReward(plugin, p, randomNum);
                 Experience.addXP(plugin, p, p.getWorld(), xpGained);
             }
