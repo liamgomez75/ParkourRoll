@@ -53,12 +53,13 @@ public abstract class Experience {
                 player.sendMessage("You have leveled up to level " + level + "!");
             } else {
                 currentExp = reqExp;
+            }
         }
         EXPConfigUtils.setPlayerExp(player, world, currentExp, plugin);
         
         plugin.saveConfig();
-        }
     }
+    
 
     /**
      * Returns required Experience to get to the next level.
