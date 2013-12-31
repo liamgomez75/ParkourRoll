@@ -46,15 +46,18 @@ public abstract class Experience {
         int level = LevelConfigUtils.getPlayerLevel(player, world, plugin);
         final int reqExp = getRequiredExp(plugin, level);
         if (currentExp >= reqExp) {
-            level++;
-            currentExp -= reqExp;
-            
-            LevelConfigUtils.setPlayerLevel(player, world, level, plugin);
-            player.sendMessage("You have leveled up to level " + level + "!");
+            if (level < 100) { 
+                level++;
+                currentExp -= reqExp;
+                LevelConfigUtils.setPlayerLevel(player, world, level, plugin);
+                player.sendMessage("You have leveled up to level " + level + "!");
+            } else {
+                currentExp = reqExp;
         }
         EXPConfigUtils.setPlayerExp(player, world, currentExp, plugin);
         
         plugin.saveConfig();
+        }
     }
 
     /**
