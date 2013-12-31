@@ -429,6 +429,6 @@ Level:
     Exp Required: 9900
   100:
     Damage Threshold: 23
-    Damage Reduction: 0
+    Damage Reduction: 1
     Exp Required: 10000
 
