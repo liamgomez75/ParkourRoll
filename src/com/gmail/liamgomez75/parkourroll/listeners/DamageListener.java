@@ -5,6 +5,7 @@ import com.gmail.liamgomez75.parkourroll.experience.Experience;
 import com.gmail.liamgomez75.parkourroll.localisation.Localisation;
 import com.gmail.liamgomez75.parkourroll.localisation.LocalisationEntry;
 import com.gmail.liamgomez75.parkourroll.utils.LevelConfigUtils;
+import java.util.Random;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -64,7 +65,8 @@ public class DamageListener implements Listener {
                     }
                 }
                 
-                int randomNum =(int) (Math.random() * p.getFallDistance()) + 1;
+                Random r = new Random();
+                int randomNum =(int) p.getFallDistance() + r.nextInt(5);
                 final int xpGained = Experience.getExpReward(plugin, p, randomNum);
                 Experience.addXP(plugin, p, p.getWorld(), xpGained);
             }
