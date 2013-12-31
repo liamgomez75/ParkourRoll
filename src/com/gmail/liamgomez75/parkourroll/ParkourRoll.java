@@ -8,10 +8,12 @@ import com.gmail.liamgomez75.parkourroll.localisation.LocalisationEntry;
 import com.gmail.liamgomez75.parkourroll.utils.EXPConfigUtils;
 import com.gmail.liamgomez75.parkourroll.utils.LevelConfigUtils;
 import com.gmail.liamgomez75.parkourroll.utils.RateConfigUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -63,6 +65,35 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                     } else {
                         sender.sendMessage("You can't run that command from the console!");
                         return true;
+                    }
+                } else if(args[0].equalsIgnoreCase("setlevel")) {
+                    if (args.length > 3) {
+                        if ((sender instanceof Player) && (sender.hasPermission("pkr.admin"))) {
+                            final String target = args[1];
+                            final String worldName = args [2];
+                            if (target != null) {
+                                int level = Integer.parseInt(args[3]);
+                                LevelConfigUtils.setPlayerLevel(target, worldName,level,this);
+                                sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this) );
+                                
+                            } else {
+                                sender.sendMessage(ChatColor.RED + "The specified player does not exist.");
+                            }
+                        } else {
+                            final String target = args[1];
+                            final String worldName = args [2];
+                            if (target != null) {
+                                int level = Integer.parseInt(args[3]);
+                                LevelConfigUtils.setPlayerLevel(target, worldName,level,this);
+                                sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this) );
+                                
+                            } else {
+                                sender.sendMessage(ChatColor.RED + "The specified player does not exist.");
+                            }
+                        }
+                        
+                        
+                        
                     }
                 }
             }
