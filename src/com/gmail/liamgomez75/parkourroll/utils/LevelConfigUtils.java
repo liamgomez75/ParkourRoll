@@ -48,7 +48,7 @@ public abstract class LevelConfigUtils {
      * If there is an error with the default value for the server, the default
      * is returned.
      *
-     * Currently the default is false.
+     * Currently the default is 1.
      *
      * @param player    the player being checked
      * @param world     the world of the player being checked
@@ -59,5 +59,45 @@ public abstract class LevelConfigUtils {
         return plugin.getConfig().getInt("Server.Worlds." + world.getName() + ".Players." + player.getName() + "." + LVL_CONFIG_STRING,
                 LVL_DEFAULT);
     }
+    
 
+
+    /**
+     * Sets the Level of the passed player in the passed world to the passed
+     * state, then saves the config.
+     * Uses a String instead of player and world
+     * @param player    player to set the Level of
+     * @param world     world in which to set the player's Level
+     * @param level    Level to change to
+     * @param plugin    plugin with the config storing Level values
+     */
+    public static void setPlayerLevel(String player, String world, int level, Plugin plugin) {
+        final String path = "Server.Worlds." + world + ".Players." + player + "." + LVL_CONFIG_STRING;
+        plugin.getConfig().set(path, level);
+        plugin.saveConfig();
+    }
+    
+     /**
+     * Return the specified player's Level in a specified world.
+     * The method first looks for a specific value for the player in the world.
+     *
+     * If that is not found, the method checks the default value for the world.
+     *
+     * If that is not found, the method checks the default value for the server.
+     *
+     * If there is an error with the default value for the server, the default
+     * is returned.
+     *
+     * Currently the default is 1.
+     * Uses String instead of Player and world
+     * @param player    the player being checked
+     * @param world     the world of the player being checked
+     * @param plugin    plugin with config which stores Level data
+     * @return          the Level of player in world
+     */
+    public static int getPlayerLevel(String player, String world, Plugin plugin) {
+        return plugin.getConfig().getInt("Server.Worlds." + world + ".Players." + player + "." + LVL_CONFIG_STRING,
+                LVL_DEFAULT);
+    }
 }
+
