@@ -3,6 +3,7 @@ package com.gmail.liamgomez75.parkourroll.experience;
 import com.gmail.liamgomez75.parkourroll.utils.EXPConfigUtils;
 import com.gmail.liamgomez75.parkourroll.utils.LevelConfigUtils;
 import com.gmail.liamgomez75.parkourroll.utils.RateConfigUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -41,7 +42,7 @@ public abstract class Experience {
     public static void addXP(Plugin plugin, Player player, World world, int xpGain) {
         int currentExp = EXPConfigUtils.getPlayerExp(player, world, plugin);
         currentExp += xpGain;
-        player.sendMessage("You have gained " + xpGain + " experience");
+        player.sendMessage( ChatColor.GRAY + "You have gained " + xpGain + " experience");
         
         int level = LevelConfigUtils.getPlayerLevel(player, world, plugin);
         final int reqExp = getRequiredExp(plugin, level);
@@ -50,7 +51,7 @@ public abstract class Experience {
                 level++;
                 currentExp -= reqExp;
                 LevelConfigUtils.setPlayerLevel(player, world, level, plugin);
-                player.sendMessage("You have leveled up to level " + level + "!");
+                player.sendMessage(ChatColor.GOLD + "You have leveled up to level " + level + "!");
             } else {
                 currentExp = reqExp;
             }
