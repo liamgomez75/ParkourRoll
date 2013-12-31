@@ -20,14 +20,14 @@ public abstract class Experience {
      * 
      * @param plugin
      * @param player
-     * @param damage
+     * @param fallDist
      * @return
      */
-    public static int getExpReward(Plugin plugin, Player player, int damage) {
+    public static int getExpReward(Plugin plugin, Player player, int fallDist) {
         final World world = player.getWorld();
         final int expRate = RateConfigUtils.getPlayerRate(player, world, plugin);
         final int level = LevelConfigUtils.getPlayerLevel(player, world, plugin);
-        return damage * expRate + level;
+        return fallDist * expRate + level;
     }
 
     /**
