@@ -1,12 +1,12 @@
 name: ParkourRoll
 main: com.gmail.liamgomez75.parkourroll.ParkourRoll
-version: 2.4.0
+version: 2.9.0
 
 commands:
     parkourroll:
         description: configure settings in the plugin!
         aliases: [pkr, parkroll, pkroll]
-        usage: /<command> reload
+        usage: See '/<command> help' for correct usages
 permissions:
     pkr.*:
         description: Gives access to all commands
