@@ -1,6 +1,8 @@
 package com.gmail.liamgomez75.parkourroll.utils;
 
+import org.bukkit.ChatColor;
 import org.bukkit.World;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -58,5 +60,18 @@ public abstract class EXPConfigUtils {
     public static int getPlayerExp(Player player, World world, Plugin plugin) {
         return plugin.getConfig().getInt("Server.Worlds." + world.getName() + ".Players." + player.getName() + "." + EXP_CONFIG_STRING,
                 EXP_DEFAULT);
+    }
+    public static int getPlayerExp(String player, String world, Plugin plugin, CommandSender sender) {
+        if (plugin.getConfig().getString("Server.Worlds." + world) != null) {
+            if(plugin.getConfig().getString("Server.Worlds." + world + ".Players." + player) != null) {
+                return plugin.getConfig().getInt("Server.Worlds." + world + ".Players." + player + "." + EXP_CONFIG_STRING,
+                EXP_DEFAULT);
+            } else {
+                sender.sendMessage(ChatColor.RED + "Player not found.");
+            }
+        } else {
+            sender.sendMessage(ChatColor.RED + "World '" + world + "' does not exist.");
+        }
+        return -1;
     }
 }
