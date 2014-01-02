@@ -52,7 +52,20 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                     return reload(sender);
                 } else if ((args[0].equalsIgnoreCase("level"))) {
                     if (sender instanceof Player) {
-                        final Player p = (Player) sender;
+                        if (args.length > 3) {
+                            final String p = args[3];
+                            final String world = args[2];
+                            if (LevelConfigUtils.getPlayerLevel(p, world, this, (Player) sender) > 0 && EXPConfigUtils.getPlayerExp(p, world, this, (Player) sender) >= 0 ) {
+                                final int lvlNum = LevelConfigUtils.getPlayerLevel(p, world, this, (Player) sender);
+                                final int expNum = EXPConfigUtils.getPlayerExp(p, world, this, (Player) sender);
+                                final int reqExp = Experience.getRequiredExp(this, lvlNum);
+                                sender.sendMessage("You are level " + lvlNum + ".");
+                                sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                                return true;
+                            }    
+                            
+                        } else {
+                            final Player p = (Player) sender;
                         final World world = p.getWorld();
                         final int lvlNum = LevelConfigUtils.getPlayerLevel(p, world, this);
                         final int expNum = EXPConfigUtils.getPlayerExp(p, world, this);
@@ -60,8 +73,20 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                         final int rate = RateConfigUtils.getPlayerRate(p, world, this);
                         sender.sendMessage("You are level " + lvlNum + ".");
                         sender.sendMessage("Exp: " + expNum + "/" + reqExp);
-                        sender.sendMessage("Exp Rate: " + rate); // TODO remove?
                         return true;
+                        }
+                        
+                    } else if (args.length > 3) {
+                            final String p = args[3];
+                            final String world = args[2];
+                            if (LevelConfigUtils.getPlayerLevel(p, world, this, sender) > 0 && EXPConfigUtils.getPlayerExp(p, world, this, sender) >= 0 ) {
+                                final int lvlNum = LevelConfigUtils.getPlayerLevel(p, world, this, (Player) sender);
+                                final int expNum = EXPConfigUtils.getPlayerExp(p, world, this, (Player) sender);
+                                final int reqExp = Experience.getRequiredExp(this, lvlNum);
+                                sender.sendMessage("You are level " + lvlNum + ".");
+                                sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                                return true;
+                            }
                     } else {
                         sender.sendMessage("You can't run that command from the console!");
                         return true;
@@ -72,10 +97,16 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                             final String target = args[1];
                             final String worldName = args [2];
                             if (target != null) {
-                                int level = Integer.parseInt(args[3]);
-                                LevelConfigUtils.setPlayerLevel(target, worldName,level,this);
-                                sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this) );
-                                
+                            try {
+                                    int level = Integer.parseInt(args[3]);
+                                    LevelConfigUtils.setPlayerLevel(target, worldName,level,this,(Player) sender);
+                                    if(LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) > 0) {
+                                        sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) );
+                                    }
+                                }
+                                catch(NumberFormatException ex) {
+                                    sender.sendMessage(ChatColor.RED + "Incorrect Format!");
+                                }
                             } else {
                                 sender.sendMessage(ChatColor.RED + "The specified player does not exist.");
                             }
@@ -83,18 +114,28 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                             final String target = args[1];
                             final String worldName = args [2];
                             if (target != null) {
-                                int level = Integer.parseInt(args[3]);
-                                LevelConfigUtils.setPlayerLevel(target, worldName,level,this);
-                                sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this) );
-                                
+                                try {
+                                    int level = Integer.parseInt(args[3]);
+                                    LevelConfigUtils.setPlayerLevel(target, worldName,level,this,(Player) sender);
+                                    if(LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) > 0) {
+                                        sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) );
+                                    }
+                                }
+                                catch(NumberFormatException ex) {
+                                    sender.sendMessage(ChatColor.RED + "Incorrect Format!");
+                                }
                             } else {
                                 sender.sendMessage(ChatColor.RED + "The specified player does not exist.");
                             }
-                        }
-                        
-                        
-                        
+                        }   
                     }
+                } else if (args[0].equalsIgnoreCase("help")) {
+                    sender.sendMessage(ChatColor.GOLD + "--------------Commands--------------");
+                    sender.sendMessage(ChatColor.GRAY + "/Parkourroll help - Displays the list of commands.");
+                    sender.sendMessage(ChatColor.GRAY + "/Parkourroll level - Displays your level in the current world.");
+                    sender.sendMessage(ChatColor.GRAY + "/Parkourroll level <player> [world] - Displays the level of a player in a world.");
+                    sender.sendMessage(ChatColor.GRAY + "/Parkourroll setlevel <player> [world] <integer> - Sets a players level for a world.");
+                    sender.sendMessage(ChatColor.GRAY + "/Parkourroll reload - Reloads the config.");
                 }
             }
         }
