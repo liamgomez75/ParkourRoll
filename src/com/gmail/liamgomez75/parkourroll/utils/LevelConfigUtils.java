@@ -1,6 +1,8 @@
 package com.gmail.liamgomez75.parkourroll.utils;
 
+import org.bukkit.ChatColor;
 import org.bukkit.World;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -71,10 +73,19 @@ public abstract class LevelConfigUtils {
      * @param level    Level to change to
      * @param plugin    plugin with the config storing Level values
      */
-    public static void setPlayerLevel(String player, String world, int level, Plugin plugin) {
-        final String path = "Server.Worlds." + world + ".Players." + player + "." + LVL_CONFIG_STRING;
+    public static void setPlayerLevel(String player, String world, int level, Plugin plugin, CommandSender sender) {
+        if (plugin.getConfig().getString("Server.Worlds." + world + ".Players." + player) != null) {
+             if (plugin.getConfig().getString("Server.Worlds." + world + ".Players." + player) != null) {
+                 final String path = "Server.Worlds." + world + ".Players." + player + "." + LVL_CONFIG_STRING;
         plugin.getConfig().set(path, level);
         plugin.saveConfig();
+             } else {
+                 sender.sendMessage(ChatColor.RED + "Player not found.");
+             }
+        } else {
+            sender.sendMessage(ChatColor.RED + "World '" + world + "' does not exist.");
+        } 
+        
     }
     
      /**
@@ -95,9 +106,18 @@ public abstract class LevelConfigUtils {
      * @param plugin    plugin with config which stores Level data
      * @return          the Level of player in world
      */
-    public static int getPlayerLevel(String player, String world, Plugin plugin) {
-        return plugin.getConfig().getInt("Server.Worlds." + world + ".Players." + player + "." + LVL_CONFIG_STRING,
+    public static int getPlayerLevel(String player, String world, Plugin plugin, CommandSender sender) {
+        if (plugin.getConfig().getString("Server.Worlds." + world) != null) {
+            if (plugin.getConfig().getString("Server.Worlds." + world + ".Players." + player) != null) {
+                return plugin.getConfig().getInt("Server.Worlds." + world + ".Players." + player + "." + LVL_CONFIG_STRING,
                 LVL_DEFAULT);
+            } else {
+                sender.sendMessage(ChatColor.RED + "Player not found.");
+            }
+        } else {
+            sender.sendMessage(ChatColor.RED + "World '" + world + "' does not exist.");
+        }
+     return -1;   
     }
 }
 
