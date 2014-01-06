@@ -1,6 +1,6 @@
 name: ParkourRoll
 main: com.gmail.liamgomez75.parkourroll.ParkourRoll
-version: 2.9.2
+version: 2.9.3
 
 commands:
     parkourroll:
