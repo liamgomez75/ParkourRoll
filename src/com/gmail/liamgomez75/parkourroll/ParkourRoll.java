@@ -154,12 +154,12 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                                     
                                     int level = Integer.parseInt(args[3]);
                                     
-                                    if(level <= 100) {
+                                    if(level <= 100 && level >= 1) {
                                         
                                         LevelConfigUtils.setPlayerLevel(target, worldName,level,this,(Player) sender);
                                     
                                     } else {
-                                        sender.sendMessage(ChatColor.RED + "The max level is 100!");
+                                        sender.sendMessage(ChatColor.RED + "Only levels 1 through 100 are allowed!");
                                     }
                                     
                                     if(LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) > 0) {
@@ -189,13 +189,13 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                                     
                                     int level = Integer.parseInt(args[3]);
                                     
-                                    if(level <= 100) {
+                                    if(level <= 100 && level >= 1) {
                                     
                                         LevelConfigUtils.setPlayerLevel(target, worldName,level,this, sender);
                                     
                                     } else {
                                         
-                                        sender.sendMessage(ChatColor.RED + "The max level is 100!");
+                                        sender.sendMessage(ChatColor.RED + "Only levels 1 through 100 are allowed!");
                                     
                                     }
                                     
