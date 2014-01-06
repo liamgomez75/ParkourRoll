@@ -76,9 +76,9 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                                 
                                 final int reqExp = Experience.getRequiredExp(this, lvlNum);
                                 
-                                sender.sendMessage( args[1] + " is level " + lvlNum + ".");
+                                sender.sendMessage(ChatColor.GRAY + args[1] + " is level " + lvlNum + ".");
                                 
-                                sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                                sender.sendMessage(ChatColor.GRAY + "Exp: " + expNum + "/" + reqExp);
                                 
                                 return true;
                             
@@ -99,9 +99,9 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                         
                             final int rate = RateConfigUtils.getPlayerRate(p, world, this);
                        
-                            sender.sendMessage("You are level " + lvlNum + ".");
+                            sender.sendMessage(ChatColor.GRAY + "You are level " + lvlNum + ".");
                         
-                            sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                            sender.sendMessage(ChatColor.GRAY + "Exp: " + expNum + "/" + reqExp);
                        
                             return true;
                         
@@ -122,9 +122,9 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                                 
                                 final int reqExp = Experience.getRequiredExp(this, lvlNum);
                                
-                                sender.sendMessage( args[1] + " is level " + lvlNum + ".");
+                                sender.sendMessage(ChatColor.GRAY + args[1] + " is level " + lvlNum + ".");
                                 
-                                sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                                sender.sendMessage(ChatColor.GRAY + "Exp: " + expNum + "/" + reqExp);
                               
                                 return true;
                            
