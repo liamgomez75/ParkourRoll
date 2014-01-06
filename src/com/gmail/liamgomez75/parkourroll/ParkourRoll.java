@@ -30,8 +30,11 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
     private Localisation localisation = new Localisation(this);
     
     @Override
+   
     public void onEnable() {
+        
         getServer().getPluginManager().registerEvents(new DamageListener(this), this);
+        
         saveDefaultConfig();
     }
 
@@ -46,79 +49,146 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
      */
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+        
         if (cmd.getName().equalsIgnoreCase("Parkourroll")) {
+            
             if (args.length > 0) {
+               
                 if ((args[0].equalsIgnoreCase("reload"))) {
+                    
                     return reload(sender);
+                
                 } else if ((args[0].equalsIgnoreCase("level"))) {
+                    
                     if (sender instanceof Player) {
+                        
                         if (args.length > 3) {
+                            
                             final String p = args[3];
+                            
                             final String world = args[2];
+                            
                             if (LevelConfigUtils.getPlayerLevel(p, world, this, (Player) sender) > 0 && EXPConfigUtils.getPlayerExp(p, world, this, (Player) sender) >= 0 ) {
+                                
                                 final int lvlNum = LevelConfigUtils.getPlayerLevel(p, world, this, (Player) sender);
+                                
                                 final int expNum = EXPConfigUtils.getPlayerExp(p, world, this, (Player) sender);
+                                
                                 final int reqExp = Experience.getRequiredExp(this, lvlNum);
+                                
                                 sender.sendMessage("You are level " + lvlNum + ".");
+                                
                                 sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                                
                                 return true;
+                            
                             }    
                             
+                        
                         } else {
+                            
                             final Player p = (Player) sender;
-                        final World world = p.getWorld();
-                        final int lvlNum = LevelConfigUtils.getPlayerLevel(p, world, this);
-                        final int expNum = EXPConfigUtils.getPlayerExp(p, world, this);
-                        final int reqExp = Experience.getRequiredExp(this, lvlNum);
-                        final int rate = RateConfigUtils.getPlayerRate(p, world, this);
-                        sender.sendMessage("You are level " + lvlNum + ".");
-                        sender.sendMessage("Exp: " + expNum + "/" + reqExp);
-                        return true;
+                        
+                            final World world = p.getWorld();
+                        
+                            final int lvlNum = LevelConfigUtils.getPlayerLevel(p, world, this);
+                        
+                            final int expNum = EXPConfigUtils.getPlayerExp(p, world, this);
+                        
+                            final int reqExp = Experience.getRequiredExp(this, lvlNum);
+                        
+                            final int rate = RateConfigUtils.getPlayerRate(p, world, this);
+                       
+                            sender.sendMessage("You are level " + lvlNum + ".");
+                        
+                            sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                       
+                            return true;
+                        
                         }
                         
+                   
                     } else if (args.length > 3) {
-                            final String p = args[3];
+                           
+                        final String p = args[3];
+                           
                             final String world = args[2];
+                          
                             if (LevelConfigUtils.getPlayerLevel(p, world, this, sender) > 0 && EXPConfigUtils.getPlayerExp(p, world, this, sender) >= 0 ) {
-                                final int lvlNum = LevelConfigUtils.getPlayerLevel(p, world, this, (Player) sender);
-                                final int expNum = EXPConfigUtils.getPlayerExp(p, world, this, (Player) sender);
+                               
+                                final int lvlNum = LevelConfigUtils.getPlayerLevel(p, world, this, sender);
+                                
+                                final int expNum = EXPConfigUtils.getPlayerExp(p, world, this, sender);
+                                
                                 final int reqExp = Experience.getRequiredExp(this, lvlNum);
-                                sender.sendMessage("You are level " + lvlNum + ".");
+                               
+                                sender.sendMessage( args[3] + " is level " + lvlNum + ".");
+                                
                                 sender.sendMessage("Exp: " + expNum + "/" + reqExp);
+                              
                                 return true;
+                           
                             }
+                    
                     } else {
+                        
                         sender.sendMessage("You can't run that command from the console!");
+                        
                         return true;
+                   
                     }
+               
                 } else if(args[0].equalsIgnoreCase("setlevel")) {
+                    
                     if (args.length > 3) {
+                        
                         if ((sender instanceof Player) && (sender.hasPermission("pkr.admin"))) {
+                            
                             final String target = args[1];
+                            
                             final String worldName = args [2];
+                            
                             if (target != null) {
-                            try {
+                            
+                                try {
+                                    
                                     int level = Integer.parseInt(args[3]);
+                                    
                                     LevelConfigUtils.setPlayerLevel(target, worldName,level,this,(Player) sender);
+                                    
                                     if(LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) > 0) {
+                                        
                                         sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) );
+                                        
+                                        return true;
                                     }
                                 }
                                 catch(NumberFormatException ex) {
+                                    
                                     sender.sendMessage(ChatColor.RED + "Incorrect Format!");
                                 }
                             } else {
+                                
                                 sender.sendMessage(ChatColor.RED + "The specified player does not exist.");
                             }
                         } else {
+                            
                             final String target = args[1];
+                            
                             final String worldName = args [2];
+                            
                             if (target != null) {
                                 try {
+                                    
                                     int level = Integer.parseInt(args[3]);
-                                    LevelConfigUtils.setPlayerLevel(target, worldName,level,this,(Player) sender);
-                                    if(LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) > 0) {
-                                        sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) );
+                                    
+                                    LevelConfigUtils.setPlayerLevel(target, worldName,level,this, sender);
+                                    
+                                    if(LevelConfigUtils.getPlayerLevel(target, worldName, this, sender) > 0) {
+                                        
+                                        sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this, sender) );
+                                        
+                                        return true;
                                     }
                                 }
                                 catch(NumberFormatException ex) {
@@ -130,16 +200,29 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                         }   
                     }
                 } else if (args[0].equalsIgnoreCase("help")) {
+                    
                     sender.sendMessage(ChatColor.GOLD + "--------------Commands--------------");
+                    
                     sender.sendMessage(ChatColor.GRAY + "/Parkourroll help - Displays the list of commands.");
+                    
                     sender.sendMessage(ChatColor.GRAY + "/Parkourroll level - Displays your level in the current world.");
+                    
                     sender.sendMessage(ChatColor.GRAY + "/Parkourroll level <player> [world] - Displays the level of a player in a world.");
+                    
                     sender.sendMessage(ChatColor.GRAY + "/Parkourroll setlevel <player> [world] <integer> - Sets a players level for a world.");
+                    
                     sender.sendMessage(ChatColor.GRAY + "/Parkourroll reload - Reloads the config.");
+                    
+                    return true;
+                
                 }
+            
             }
+        
         }
+        
         return false;
+    
     }
 
     /**
@@ -149,23 +232,36 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
      * @return          if the sender has the correct permissions and reloaded
      *                  the configuration correctly
      */
+    
     public boolean reload(CommandSender sender) {
+        
         if (sender.hasPermission("pkr.admin")) {
+            
             reloadConfig();
+            
             sender.sendMessage(localisation.get(LocalisationEntry.MSG_CONFIG_RELOADED));
+        
         } else {
+            
             sender.sendMessage(localisation.get(LocalisationEntry.ERR_PERMISSION_DENIED));
+        
         }
+        
         return true;
+    
     }
 
     @Override
     public Localisation getLocalisation() {
+        
         return localisation;
+    
     }
 
     @Override
     public void setLocalisation(Localisation localisation) {
+        
         this.localisation = localisation;
+    
     }
 }
