@@ -154,7 +154,13 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                                     
                                     int level = Integer.parseInt(args[3]);
                                     
-                                    LevelConfigUtils.setPlayerLevel(target, worldName,level,this,(Player) sender);
+                                    if(level <= 100) {
+                                        
+                                        LevelConfigUtils.setPlayerLevel(target, worldName,level,this,(Player) sender);
+                                    
+                                    } else {
+                                        sender.sendMessage(ChatColor.RED + "The max level is 100!");
+                                    }
                                     
                                     if(LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) > 0) {
                                         
@@ -178,11 +184,20 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                             final String worldName = args [2];
                             
                             if (target != null) {
+                                
                                 try {
                                     
                                     int level = Integer.parseInt(args[3]);
                                     
-                                    LevelConfigUtils.setPlayerLevel(target, worldName,level,this, sender);
+                                    if(level <= 100) {
+                                    
+                                        LevelConfigUtils.setPlayerLevel(target, worldName,level,this, sender);
+                                    
+                                    } else {
+                                        
+                                        sender.sendMessage(ChatColor.RED + "The max level is 100!");
+                                    
+                                    }
                                     
                                     if(LevelConfigUtils.getPlayerLevel(target, worldName, this, sender) > 0) {
                                         
