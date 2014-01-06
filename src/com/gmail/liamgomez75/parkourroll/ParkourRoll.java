@@ -62,11 +62,11 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                     
                     if (sender instanceof Player) {
                         
-                        if (args.length > 3) {
+                        if (args.length > 2) {
                             
-                            final String p = args[3];
+                            final String p = args[2];
                             
-                            final String world = args[2];
+                            final String world = args[1];
                             
                             if (LevelConfigUtils.getPlayerLevel(p, world, this, (Player) sender) > 0 && EXPConfigUtils.getPlayerExp(p, world, this, (Player) sender) >= 0 ) {
                                 
@@ -108,9 +108,9 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                         }
                         
                    
-                    } else if (args.length > 3) {
+                    } else if (args.length > 2) {
                            
-                        final String p = args[3];
+                        final String p = args[1];
                            
                             final String world = args[2];
                           
@@ -122,7 +122,7 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                                 
                                 final int reqExp = Experience.getRequiredExp(this, lvlNum);
                                
-                                sender.sendMessage( args[3] + " is level " + lvlNum + ".");
+                                sender.sendMessage( args[1] + " is level " + lvlNum + ".");
                                 
                                 sender.sendMessage("Exp: " + expNum + "/" + reqExp);
                               
@@ -158,7 +158,7 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                                     
                                     if(LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) > 0) {
                                         
-                                        sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) );
+                                        sender.sendMessage(ChatColor.GRAY + args[1] + " has been set to level " + LevelConfigUtils.getPlayerLevel(target, worldName, this, (Player) sender) );
                                         
                                         return true;
                                     }
@@ -186,7 +186,7 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                                     
                                     if(LevelConfigUtils.getPlayerLevel(target, worldName, this, sender) > 0) {
                                         
-                                        sender.sendMessage(ChatColor.GRAY + args[1] + "has been set to level" + LevelConfigUtils.getPlayerLevel(target, worldName, this, sender) );
+                                        sender.sendMessage(ChatColor.GRAY + args[1] + " has been set to level " + LevelConfigUtils.getPlayerLevel(target, worldName, this, sender) );
                                         
                                         return true;
                                     }
