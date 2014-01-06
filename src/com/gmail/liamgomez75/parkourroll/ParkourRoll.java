@@ -64,9 +64,9 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                         
                         if (args.length > 2) {
                             
-                            final String p = args[2];
+                            final String p = args[1];
                             
-                            final String world = args[1];
+                            final String world = args[2];
                             
                             if (LevelConfigUtils.getPlayerLevel(p, world, this, (Player) sender) > 0 && EXPConfigUtils.getPlayerExp(p, world, this, (Player) sender) >= 0 ) {
                                 
@@ -76,7 +76,7 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                                 
                                 final int reqExp = Experience.getRequiredExp(this, lvlNum);
                                 
-                                sender.sendMessage("You are level " + lvlNum + ".");
+                                sender.sendMessage( args[1] + " is level " + lvlNum + ".");
                                 
                                 sender.sendMessage("Exp: " + expNum + "/" + reqExp);
                                 
