@@ -222,9 +222,9 @@ public class ParkourRoll extends JavaPlugin implements Localisable {
                     
                     sender.sendMessage(ChatColor.GRAY + "/Parkourroll level - Displays your level in the current world.");
                     
-                    sender.sendMessage(ChatColor.GRAY + "/Parkourroll level <player> [world] - Displays the level of a player in a world.");
+                    sender.sendMessage(ChatColor.GRAY + "/Parkourroll level <player> [world] - Displays a player's level in a world.");
                     
-                    sender.sendMessage(ChatColor.GRAY + "/Parkourroll setlevel <player> [world] <integer> - Sets a players level for a world.");
+                    sender.sendMessage(ChatColor.GRAY + "/Parkourroll setlevel <player> [world] <integer> - Sets a player's level for a world.");
                     
                     sender.sendMessage(ChatColor.GRAY + "/Parkourroll reload - Reloads the config.");
                     
