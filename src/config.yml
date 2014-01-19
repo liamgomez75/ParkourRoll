@@ -1,6 +1,5 @@
 #Damage Threshold is the amount of damage normally taken before the plugin reduces damage instead of cancelling it
-#Note: Damage Threshold uses the amount of HP taken from a player instead of the block height
-#2 HP = 1 heart
+#Note: Damage Threshold uses the amount of blocks the player has fallen
 
 Localisation Filename: localisation.yml
 
